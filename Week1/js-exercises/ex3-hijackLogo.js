@@ -12,8 +12,13 @@
 
  */
 
+'use strict';
+
 function hijackGoogleLogo() {
   // your code goes in here
+  const logo = document.getElementById('hplogo');
+  logo.src = 'https://www.hackyourfuture.dk/static/logo-dark.svg';
+  logo.srcset = 'https://www.hackyourfuture.dk/static/logo-dark.svg'; // a question to the mentor: google uses one source for two attributes - src and srcset, what is the difference?
 }
 
 hijackGoogleLogo();
