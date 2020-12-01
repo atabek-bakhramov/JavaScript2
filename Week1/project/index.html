@@ -1,1 +1,27 @@
-<!-- Your code goes in here -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./index.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Random Quote Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <p id="quote-place" class="quote">Lorem ipsum dolor sit amet consectetur sit amet.</p>
+      <p id="author-place" class="author">Lorem Ipsum</p>
+      <div class="buttons-holder">
+        <div class="social-media-buttons">
+          <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook fa-2x"></a>
+          <a href="https://www.twitter.com" target="_blank" class="fa fa-twitter fa-2x"></a>
+        </div>
+        <button onclick="generateRandomQuote(listOfQuotes);" class="new-quote">New Quote</button>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
