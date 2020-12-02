@@ -16,56 +16,51 @@
 
 const walkingCat = document.querySelector('img');
 
+// creating a dancing image, placing it in the center of the screen, appending to the body
+const dancingCat = document.createElement('img');
 const fullWindowWidth = window.innerWidth;
-
 const walkingCatSize = walkingCat.getBoundingClientRect();
 const centeringDancingCat = `${(fullWindowWidth - walkingCatSize.width) / 2}px`;
-
-let walking = 0;
-
-let catReachedCenter = false;
-
-const dancingCat = document.createElement('img');
 dancingCat.src =
   'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif?itemid=10561424';
 const dancingCatDStyle = dancingCat.style;
 dancingCatDStyle.position = 'absolute';
 dancingCatDStyle.marginLeft = centeringDancingCat;
+// initially the dancing cat is not appearing
 dancingCatDStyle.display = 'none';
 document.body.appendChild(dancingCat);
 
+// walking keeps the value of cat's walking
+let walking = 0;
+// initially 'cat reaching center' is false
+let catReachedCenter = false;
 const catWalk = () => {
   walking += 10; // every calling of the function increases the distance of the cat's walking;
   const walkingCatSizeInsideFunction = walkingCat.getBoundingClientRect();
-  const rightSideOfCat = fullWindowWidth - walkingCatSizeInsideFunction.right; // the "walkingCat Size" variable can't be used here as a shortcut since the value of getBoundingClientRect constantly changes;
+  const rightSideOfCat = fullWindowWidth - walkingCatSizeInsideFunction.right; // the "walkingCatSize" variable can't be used here as a shortcut since the value of getBoundingClientRect constantly changes;
+  // in case of two conditions are fullfilled,
   if (
     !catReachedCenter &&
     walkingCatSizeInsideFunction.right >
       window.innerWidth / 2 + walkingCatSizeInsideFunction.width / 2
   ) {
-    catReachedCenter = true;
-    dancingCatDStyle.display = 'block';
-    clearInterval(interval);
+    catReachedCenter = true; // 1) the value of 'cat reaching center' changes to true
+    dancingCatDStyle.display = 'block'; // 2) we display the dancing cat
+    clearInterval(interval); // 3) we stop calling the catwalk function
+    // 4) and finally after 5 seconds the dancing cat disappears again and the cat walk is invoked again;
     setTimeout(function() {
       dancingCat.style.display = 'none';
       interval = setInterval(catWalk, 50);
     }, 5000);
   }
-  // when the cat's right top corner goes over the right side of the window,
+  // when the walking cat's right top corner goes over the right side of the window,
   if (rightSideOfCat < 0) {
     // the distance of cat's walking turns into zero
     walking = 0;
     // and the cat's reaching center switches to false again;
     catReachedCenter = false;
-    console.log('Show it when it returns to the beginning');
   }
   walkingCat.style.marginLeft = `${walking}px`; // placing the position of the cat in a template string;
 };
 
 let interval = setInterval(catWalk, 50);
-
-// let oneTimeThing = false;
-// As soon as the function is invoked oneTimeThing changes into true;
-// As soon as the one lap of the cat ends, oneTimeThing becomes false again;
-
-// observer in the middle of the screen, it lets you know that one event is happening

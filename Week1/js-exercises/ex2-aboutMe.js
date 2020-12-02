@@ -15,20 +15,29 @@
 const body = document.body;
 body.style.fontFamily = 'Arial, sans-serif';
 
+// a function that has two parameters
 const insertInnerText = (id, text) => {
+  // targeting an element using passed first parameter
   const targetElement = document.getElementById(id);
+  // inserting a text inside that element
   targetElement.innerText = text;
 };
+// Invoking the function and passing two arguments
 insertInnerText('nickname', 'Ata');
 insertInnerText('fav-food', 'pizza');
-insertInnerText('hometown', 'Shymkent');
+insertInnerText('hometown', 'Almaty');
 
+// targeting all list items
 const listItem = document.querySelectorAll('li');
+// for each list item adding a class attribute
 listItem.forEach(item => {
   item.classList.add('list-item');
 });
 
+// creating an image element
 const myImage = document.createElement('img');
+// assigning a link to the image's source
 myImage.src =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtfl8a3emNH5v8fgYNkyMvnXkcqyGiW_2KLQ&usqp=CAU';
+// appending the image to the body of the html
 body.appendChild(myImage);

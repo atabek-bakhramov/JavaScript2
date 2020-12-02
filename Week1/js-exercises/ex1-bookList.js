@@ -19,27 +19,37 @@
 'use strict';
 
 function createBookList(array) {
+  // targeting the ul tag
   const unorderedList = document.createElement('ul');
+  // adding a class attribute to the ul tag
   unorderedList.classList.add = 'unordered-list';
+  // looping through the array
   for (const item of array) {
-    const paragraph = document.createElement('p'); // I thought h2 would fit better here
+    // creating a paragraph element
+    const paragraph = document.createElement('p');
+    // placing a text inside the paragraph
     paragraph.innerText = `${item.title} by ${item.author}`;
+    // creating a list item element
     const listItem = document.createElement('li');
+    // giving some styling to the list item
     listItem.style.listStyleType = 'none';
     listItem.style.display = 'inline-block';
     listItem.style.margin = '0 10px';
+    // creating an image element
     const image = document.createElement('img');
+    // assigning a value to the image's attribute
     image.src = `${item.url}`;
+    // giving some styling to the image
     image.width = '300';
     image.style.display = 'block';
+    // appending the paragraph and the image as the children of the list item
     listItem.appendChild(paragraph).appendChild(image);
-    if (item.alreadyRead === true) {
-      listItem.style.backgroundColor = 'green';
-    } else {
-      listItem.style.backgroundColor = 'red';
-    }
+    // assigning a value to the background color property of the list item
+    listItem.style.backgroundColor = item.alreadyRead ? 'green' : 'red';
+    // appending the list item as a child of the unordered list
     unorderedList.appendChild(listItem);
   }
+  // returning the unordered list
   return unorderedList;
 }
 
@@ -64,6 +74,7 @@ const books = [
   },
 ];
 
+// storing the returned value of the function 'createBookList' with the passed argument of an object 'books'
 const ulElement = createBookList(books);
-
+// targeting the element with the id of 'bookList' and appending a child to it
 document.querySelector('#bookList').appendChild(ulElement);
