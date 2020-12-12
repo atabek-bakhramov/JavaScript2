@@ -1,3 +1,6 @@
+/* eslint-disable no-alert */
+/* eslint-disable prettier/prettier */
+
 'use strict';
 
 const bill = document.getElementById('bill');
@@ -38,9 +41,9 @@ calculator.addEventListener('click', () => {
   if (amountOfBill === undefined) {
     alert("Hey, you've left the bill blank!");
   } else if (
-    !isNaN(amountOfBill) === true &&
+    !Number.isNaN(amountOfBill) &&
     amountOfTips === undefined &&
-    !isNaN(amountOfPeople) === true
+    !Number.isNaN(amountOfPeople)
   ) {
     alert("Tell us how you find our service!");
   } else if (amountOfPeople === undefined) {
@@ -50,10 +53,10 @@ calculator.addEventListener('click', () => {
     headerTipAmount.style.display = 'block';
     hiddenSection.classList.add('fade-in');
     if (amountOfPeople === 1) {
-      holderOfAmountOfFinalPrice.innerText = '€' + tipAmount;
+      holderOfAmountOfFinalPrice.innerText = `€${tipAmount}`;
       holderOfEachPerson.style.display = 'none';
     } else {
-      holderOfAmountOfFinalPrice.innerText = '€' + (tipAmount / amountOfPeople).toFixed(2);
+      holderOfAmountOfFinalPrice.innerText = `€${(tipAmount / amountOfPeople).toFixed(2)}`;
       holderOfEachPerson.style.display = 'block';
     }
   }
