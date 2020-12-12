@@ -33,7 +33,7 @@ const hiddenSection = document.getElementById('hidden-section');
 const headerTipAmount = document.getElementById('tip-amount');
 const holderOfAmountOfFinalPrice = document.getElementById('final-amount');
 const holderOfEachPerson = document.getElementById('each');
-let amountOfFinalPrice;
+let tipAmount;
 calculator.addEventListener('click', () => {
   if (amountOfBill === undefined) {
     alert("Hey, you've left the bill blank!");
@@ -46,14 +46,14 @@ calculator.addEventListener('click', () => {
   } else if (amountOfPeople === undefined) {
     alert("Hey, you've left the number of people blank!");
   } else {
-    amountOfFinalPrice = amountOfBill * (amountOfTips / 100) + amountOfBill;
+    tipAmount = amountOfBill * (amountOfTips / 100);
     headerTipAmount.style.display = 'block';
     hiddenSection.classList.add('fade-in');
     if (amountOfPeople === 1) {
-      holderOfAmountOfFinalPrice.innerText = '€' + amountOfFinalPrice;
+      holderOfAmountOfFinalPrice.innerText = '€' + tipAmount;
       holderOfEachPerson.style.display = 'none';
     } else {
-      holderOfAmountOfFinalPrice.innerText = '€' + (amountOfFinalPrice / amountOfPeople).toFixed(2);
+      holderOfAmountOfFinalPrice.innerText = '€' + (tipAmount / amountOfPeople).toFixed(2);
       holderOfEachPerson.style.display = 'block';
     }
   }
