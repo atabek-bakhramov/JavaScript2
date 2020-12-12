@@ -2,11 +2,11 @@
 
 const bill = document.getElementById('bill');
 let amountOfBill;
-bill.addEventListener('change', (e) => {
+bill.addEventListener('change', e => {
   if (e.target.value > 0) {
     amountOfBill = parseInt(bill.value, 10);
   } else {
-    alert('Hey, only positive numbers in the bill. Or you\'re trying to make us pay you? :)');
+    alert("Hey, you're missing the amount of the bill. It can't be zero or negative number, right? :)");
     bill.value = '';
   }
 });
@@ -19,11 +19,11 @@ service.addEventListener('change', e => {
 
 const numberOfPeople = document.getElementById('number-of-people');
 let amountOfPeople;
-numberOfPeople.addEventListener('change', (e) => {
+numberOfPeople.addEventListener('change', e => {
   if (e.target.value > 0) {
     amountOfPeople = parseInt(numberOfPeople.value, 10);
   } else {
-    alert('Hey, tell us how many of you there are? It can\'t be zero or negative number, right? :)');
+    alert("Hey, tell us how many of you there are? It can't be zero or negative number, right? :)");
     numberOfPeople.value = '';
   }
 });
@@ -36,15 +36,15 @@ const holderOfEachPerson = document.getElementById('each');
 let amountOfFinalPrice;
 calculator.addEventListener('click', () => {
   if (amountOfBill === undefined) {
-    alert('Hey, you\'ve left the bill blank!');
+    alert("Hey, you've left the bill blank!");
   } else if (
     !isNaN(amountOfBill) === true &&
     amountOfTips === undefined &&
     !isNaN(amountOfPeople) === true
   ) {
-    alert('Tell us how you find our service!');
+    alert("Tell us how you find our service!");
   } else if (amountOfPeople === undefined) {
-    alert('Hey, you\'ve left the number of people blank!');
+    alert("Hey, you've left the number of people blank!");
   } else {
     amountOfFinalPrice = amountOfBill * (amountOfTips / 100) + amountOfBill;
     headerTipAmount.style.display = 'block';
