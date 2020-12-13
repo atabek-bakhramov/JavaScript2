@@ -3,61 +3,96 @@
 
 'use strict';
 
+// variables and functions regarding pop-up window
+const popUpBox = document.getElementById('pop-up-box');
+const alertMessageHolder = document.getElementById('alert-message-holder')
+const closePopUpBoxButton = document.getElementById('close');
+closePopUpBoxButton.addEventListener('click', () => {
+  popUpBox.style.display = "none";
+})
+const showPopUpBox = function() {
+  popUpBox.style.display = "block";
+}
+window.onclick = function(event) {
+  if (event.target === popUpBox) {
+    popUpBox.style.display = "none";
+  }
+}
+/**
+ * 
+ * @param {string} errorMessage by default returns 'Invalid input' (just learnt a cool way of commenting functions :D)
+ */
+const placeErrorMessage = (errorMessage = 'Invalid input') => {
+  alertMessageHolder.innerText = errorMessage;
+}
+
+// all variables and event listener regarding the first input (bill)
 const bill = document.getElementById('bill');
 let amountOfBill;
 bill.addEventListener('change', e => {
   if (e.target.value > 0) {
     amountOfBill = parseInt(bill.value, 10);
   } else {
-    alert("Hey, you're missing the amount of the bill. It can't be zero or negative number, right? :)");
+    showPopUpBox();   
+    placeErrorMessage();
     bill.value = '';
   }
 });
 
+// all variables and event listener regarding the select options (service)
 const service = document.getElementById('service');
 let amountOfTips;
 service.addEventListener('change', e => {
   amountOfTips = parseInt(e.target.value, 10);;
 });
 
+// all variables and event listener regarding the second input (number of people)
 const numberOfPeople = document.getElementById('number-of-people');
 let amountOfPeople;
 numberOfPeople.addEventListener('change', e => {
   if (e.target.value > 0) {
     amountOfPeople = parseInt(numberOfPeople.value, 10);
   } else {
-    alert("Hey, tell us how many of you there are? It can't be zero or negative number, right? :)");
+    showPopUpBox();   
+    placeErrorMessage();
     numberOfPeople.value = '';
   }
 });
 
+// all variables and event listener regarding the calculation
 const calculator = document.getElementById('calculator');
 const hiddenSection = document.getElementById('hidden-section');
-const headerTipAmount = document.getElementById('tip-amount');
-const holderOfAmountOfFinalPrice = document.getElementById('final-amount');
+const headerOfTipAmount = document.getElementById('header-tip-amount');
+const holderOfTipAmount = document.getElementById('holder-of-tip-amount');
 const holderOfEachPerson = document.getElementById('each');
 let tipAmount;
 calculator.addEventListener('click', () => {
   if (amountOfBill === undefined) {
-    alert("Hey, you've left the bill blank!");
+    showPopUpBox();   
+    placeErrorMessage("The bill is blank!");
   } else if (
     !Number.isNaN(amountOfBill) &&
     amountOfTips === undefined &&
     !Number.isNaN(amountOfPeople)
   ) {
-    alert("Tell us how you find our service!");
+    showPopUpBox();   
+    placeErrorMessage("Choose tip amount!");
   } else if (amountOfPeople === undefined) {
-    alert("Hey, you've left the number of people blank!");
+    showPopUpBox();   
+    placeErrorMessage("The number of people is blank!");
   } else {
     tipAmount = amountOfBill * (amountOfTips / 100);
-    headerTipAmount.style.display = 'block';
+    headerOfTipAmount.style.display = 'block';
     hiddenSection.classList.add('fade-in');
     if (amountOfPeople === 1) {
-      holderOfAmountOfFinalPrice.innerText = `€${tipAmount}`;
+      holderOfTipAmount.innerText = `€${tipAmount}`;
       holderOfEachPerson.style.display = 'none';
     } else {
-      holderOfAmountOfFinalPrice.innerText = `€${(tipAmount / amountOfPeople).toFixed(2)}`;
+      holderOfTipAmount.innerText = `€${(tipAmount / amountOfPeople).toFixed(2)}`;
       holderOfEachPerson.style.display = 'block';
     }
   }
 });
+
+
+
