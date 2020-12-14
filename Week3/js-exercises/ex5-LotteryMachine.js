@@ -26,13 +26,34 @@ Don't you just love the thrill of the lottery? What if I told you we can make ou
 
 */
 
-function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
-  const numbers = [];
-  // make array
-  // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next
+function dividableByThree() {
+  console.log('Dividable by 3');
+}
+function dividableByFive() {
+  console.log('Dividable by 5');
 }
 
-threeFive(10, 15, sayThree, sayFive);
+function threeFive(startIndex, endIndex, dividableByThree, dividableByFive) {
+  const newArray = [];
+  for (let i = startIndex; i <= endIndex; i++) {
+    newArray.push(i);
+  }
+  for (let i = 0; i < newArray.length; i++) {
+    if (newArray[i] % 3 === 0 && newArray[i] % 5 === 0) {
+      dividableByThree();
+      dividableByFive();
+    } else if (newArray[i] % 3 === 0) {
+      dividableByThree();
+    } else if (newArray[i] % 5 === 0) {
+      dividableByFive();
+    } else {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+  }
+}
+
+threeFive(10, 15, dividableByThree, dividableByFive);
 
 // Should create an array [10,11,12,13,14,15]
 // and call sayFive, sayThree, sayThree, sayFive

@@ -26,7 +26,7 @@ const placeErrorMessage = (errorMessage = 'Invalid input') => {
   alertMessageHolder.innerText = errorMessage;
 }
 
-// all variables and event listener regarding the first input (bill)
+// variables and event listener regarding the first input (bill)
 const bill = document.getElementById('bill');
 let amountOfBill;
 bill.addEventListener('change', e => {
@@ -39,14 +39,14 @@ bill.addEventListener('change', e => {
   }
 });
 
-// all variables and event listener regarding the select options (service)
+// variables and event listener regarding the select options (service)
 const service = document.getElementById('service');
 let amountOfTips;
 service.addEventListener('change', e => {
   amountOfTips = parseInt(e.target.value, 10);;
 });
 
-// all variables and event listener regarding the second input (number of people)
+// variables and event listener regarding the second input (number of people)
 const numberOfPeople = document.getElementById('number-of-people');
 let amountOfPeople;
 numberOfPeople.addEventListener('change', e => {
@@ -59,7 +59,7 @@ numberOfPeople.addEventListener('change', e => {
   }
 });
 
-// all variables and event listener regarding the calculation
+// variables and event listener regarding the calculation
 const calculator = document.getElementById('calculator');
 const hiddenSection = document.getElementById('hidden-section');
 const headerOfTipAmount = document.getElementById('header-tip-amount');

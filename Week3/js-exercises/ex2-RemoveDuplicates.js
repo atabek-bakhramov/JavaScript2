@@ -13,12 +13,26 @@
 
 const letters = ['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c', 'b'];
 
-// My first attemp, but it doesn't modify the original array, it creates a new array;
+// One way
 function takeOutDuplicates(array) {
   const newArray = array.filter((element, index) => {
     return array.indexOf(element) === index;
   });
   return newArray;
 }
+
+// Another way;
+// function takeOutDuplicates(array) {
+//   const noDuplicatesObj = new Set(array);
+//   const newArray = Array.from(noDuplicatesObj);
+//   return newArray;
+// }
+
+// Third way;
+// function takeOutDuplicates(array) {
+//   return array.filter((element, index, passedArray) => {
+//     return passedArray.indexOf(element) === index;
+//   });
+// }
 
 console.log(takeOutDuplicates(letters));

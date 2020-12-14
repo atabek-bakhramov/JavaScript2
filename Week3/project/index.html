@@ -7,9 +7,11 @@
   <title>Tip Calculator</title>
 </head>
 <body>
-  <!-- <div id="app"></div> -->
+  <!--Container starts-->
   <div class="container">
+    <!--Header-->
     <h1>Tip Calculator</h1>
+    <!--Input Section starts-->
     <div class="input-section">
       <label for="bill">How much was your bill?</label>
       <br>
@@ -32,20 +34,26 @@
       <br>
       <input type="number" id="number-of-people" name="number-of-people">
     </div>
+    <!--Input Section ends-->
+    <!--Calculator button-->
     <button id="calculator">Calculate</button>
+    <!--Result Section starts-->
     <div id="hidden-section" class="result-of-calculation-section">
       <h2 id="header-tip-amount" class="header-tip-amount">Tip Amount</h2>
       <p id="holder-of-tip-amount"></p>
       <p id="each" class="hidden-text">each</p>
     </div>
+    <!--Result Section ends-->
   </div>
-
+  <!--Container ends-->
+  <!--Pop-up-box starts-->
   <div id="pop-up-box" class="modal">
     <div class="modal-content">
       <span id="close" class="close-span">&times;</span>
       <p id="alert-message-holder" class="error-message">...</p>
     </div>
   </div>
+  <!--Pop-up-box ends-->
   <script src="index.js"></script>
 </body>
 

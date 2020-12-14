@@ -12,13 +12,13 @@ Call the function three times. The return values should be:
 
 function createBase(number) {
   return function() {
-    return number = number + 9;
+    return (number = number + 9);
   }
 }
 
 const addNine = createBase(6);
 
 // Put here your function calls...
-addNine(); // returns 15
-addNine(); // returns 24
-addNine(); // returns 33
+console.log(addNine()); // returns 15
+console.log(addNine()); // returns 24
+console.log(addNine()); // returns 33
