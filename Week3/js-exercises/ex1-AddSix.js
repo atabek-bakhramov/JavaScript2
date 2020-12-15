@@ -11,10 +11,23 @@ Call the function three times. The return values should be:
  */
 
 function createBase(number) {
+  let copiedNumber = number; // following the rule of no side-affects;
   return function() {
-    return (number = number + 9);
-  }
+    copiedNumber += 9;
+    return copiedNumber;
+  };
 }
+
+// My initial solution;
+// function createBase(number) {
+//   return function() {
+//     return number = number + 9;
+//   }
+// }
+// 1) ESLint doesn't like the line number 24 and keeps showing the message 'Return statement should not contain assignment.'
+// So I think it is not a good practice doing assignment on return (?)
+// 2) I've watched a video where they say about 'no side affects'
+// which as I understand means don't change the passed argument in the function (?)
 
 const addNine = createBase(6);
 

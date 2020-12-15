@@ -26,34 +26,30 @@ Don't you just love the thrill of the lottery? What if I told you we can make ou
 
 */
 
-function dividableByThree() {
-  console.log('Dividable by 3');
+function sayDividableByThree(val) {
+  console.log(`${val} is dividable by 3`);
 }
-function dividableByFive() {
-  console.log('Dividable by 5');
+function sayDividableByFive(val) {
+  console.log(`${val} is dividable by 5`);
 }
 
-function threeFive(startIndex, endIndex, dividableByThree, dividableByFive) {
+function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
   const newArray = [];
-  for (let i = startIndex; i <= endIndex; i++) {
+  for (let i = startIndex; i <= stopIndex; i++) {
     newArray.push(i);
   }
   for (let i = 0; i < newArray.length; i++) {
-    if (newArray[i] % 3 === 0 && newArray[i] % 5 === 0) {
-      dividableByThree();
-      dividableByFive();
-    } else if (newArray[i] % 3 === 0) {
-      dividableByThree();
-    } else if (newArray[i] % 5 === 0) {
-      dividableByFive();
-    } else {
-      // eslint-disable-next-line no-continue
-      continue;
+    const iteratedValue = newArray[i]; // for easier/nicer readabilty;
+    if (iteratedValue % 3 === 0) {
+      threeCallback(iteratedValue);
+    }
+    if (iteratedValue % 5 === 0) {
+      fiveCallback(iteratedValue);
     }
   }
 }
 
-threeFive(10, 15, dividableByThree, dividableByFive);
+threeFive(10, 15, sayDividableByThree, sayDividableByFive);
 
 // Should create an array [10,11,12,13,14,15]
 // and call sayFive, sayThree, sayThree, sayFive

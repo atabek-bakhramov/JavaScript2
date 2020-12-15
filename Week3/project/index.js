@@ -8,16 +8,16 @@ const popUpBox = document.getElementById('pop-up-box');
 const alertMessageHolder = document.getElementById('alert-message-holder')
 const closePopUpBoxButton = document.getElementById('close');
 closePopUpBoxButton.addEventListener('click', () => {
-  popUpBox.style.display = "none";
+  popUpBox.style.display = 'none';
 })
-const showPopUpBox = function() {
-  popUpBox.style.display = "block";
+const showPopUpBox = () => {
+  popUpBox.style.display = 'block';
 }
-window.onclick = function(event) {
-  if (event.target === popUpBox) {
-    popUpBox.style.display = "none";
+window.addEventListener('click', e => {
+  if (e.target === popUpBox) {
+    popUpBox.style.display = 'none';
   }
-}
+});
 /**
  * 
  * @param {string} errorMessage by default returns 'Invalid input' (just learnt a cool way of commenting functions :D)
@@ -85,7 +85,7 @@ calculator.addEventListener('click', () => {
     headerOfTipAmount.style.display = 'block';
     hiddenSection.classList.add('fade-in');
     if (amountOfPeople === 1) {
-      holderOfTipAmount.innerText = `€${tipAmount}`;
+      holderOfTipAmount.innerText = `€${tipAmount.toFixed(2)}`;
       holderOfEachPerson.style.display = 'none';
     } else {
       holderOfTipAmount.innerText = `€${(tipAmount / amountOfPeople).toFixed(2)}`;
