@@ -26,7 +26,7 @@ Don't you just love the thrill of the lottery? What if I told you we can make ou
 
 */
 
-function sayDividableByThree(val) {
+function sayDivisibleByThree(val) {
   console.log(`${val} is dividable by 3`);
 }
 function sayDividableByFive(val) {
